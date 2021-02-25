@@ -1,10 +1,6 @@
-import React, { useState } from 'react'
-import { renderToString } from 'react-dom/server'
+import React from 'react'
 import ReactDOM from 'react-dom'
-import { Helmet } from 'react-helmet'
 import { Router } from 'itty-router'
-
-import { renderHTML } from './renderer/renderHTML'
 import HocApp from './pages'
 import { getPagesRoutes } from './lib/find-page-file'
 
@@ -39,7 +35,7 @@ export const registerApp = async request => {
 
 if (typeof navigator !== 'undefined') {
   console.log('hydrating...')
-  window.addEventListener('load', function() {
+  window.addEventListener('load', () => {
     const app = document.querySelector('#__reacfy')
     ReactDOM.hydrate(<HocApp />, app)
   })

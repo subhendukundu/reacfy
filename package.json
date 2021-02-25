@@ -1,0 +1,46 @@
+{
+  "private": true,
+  "name": "reacfy",
+  "version": "1.0.0",
+  "description": "A template for kick starting a Cloudflare Workers project with React",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write '**/*.{js,css,json,md}'",
+    "build": "webpack",
+    "build:prod": "webpack --mode=production",
+    "dev": "wrangler preview --watch",
+    "preview": "yarn build && node ./scripts/open-preview.js",
+    "kv:upload": "wrangler kv:key put --binding=REACFY_SSR 'script.js' ./__reacfy/worker.js --path",
+    "deploy": "yarn build:prod && yarn kv:upload && wrangler publish"
+  },
+  "author": "subh <subhendukundu14@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.12.17",
+    "@babel/plugin-transform-react-jsx": "^7.12.17",
+    "@babel/preset-env": "^7.12.17",
+    "@babel/register": "^7.12.13",
+    "babel-loader": "^8.2.2",
+    "eslint": "^7.20.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.3.1",
+    "eslint-plugin-react": "^7.22.0",
+    "node-fetch": "^2.6.1",
+    "opn": "^6.0.0",
+    "prettier": "^1.18.2"
+  },
+  "dependencies": {
+    "glob": "^7.1.6",
+    "itty-router": "^2.0.2",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-helmet": "^6.1.0",
+    "styled-components": "^5.2.1",
+    "webpack": "^5.24.1",
+    "webpack-cli": "^4.5.0"
+  }
+}
